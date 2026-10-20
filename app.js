@@ -1,4 +1,5 @@
 const express = require("express");
+const movieRoutes = require("./routes/movieRoutes"); 
 
 const app = express();
 const PORT = 3000;
@@ -10,6 +11,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to the Movie Watchlist API" });
 });
+
+// All movie routes start with /api/movies
+app.use("/api/movies", movieRoutes);
 
 // Start the server
 app.listen(PORT, () => {
